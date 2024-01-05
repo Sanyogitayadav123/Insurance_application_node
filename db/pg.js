@@ -1,12 +1,14 @@
 import pkg from 'pg';
+import * as dotenv from 'dotenv';
 const { Pool } = pkg;
 
+dotenv.config();
 const pool = new Pool({
-  user: 'sanyogita',
-  host: 'localhost', // or your database host
-  database: 'postgres',
-  password: 'Sanju@123',
-  port: 5432, // or your database port
+  user: process.env.POSTGRES_USER_NAME,
+  host: process.env.HOST_NAME, // or your database host
+  database: process.env.DATABASE_NAME,
+  password: process.env.POSTGRES_PASSWORD,
+  port: process.env.POSTGRES_PORT, // or your database port
 });
 
 const connectDBPg = async () => {
